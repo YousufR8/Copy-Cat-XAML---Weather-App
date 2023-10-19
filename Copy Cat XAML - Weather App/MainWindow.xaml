@@ -1,0 +1,128 @@
+﻿<Window x:Class="Copy_Cat_XAML___Weather_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Copy_Cat_XAML___Weather_App"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="btnstyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="10" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true" Margin="0,-5,0,0">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="300"/>
+        </Grid.RowDefinitions>
+        <Image Margin="0,0,0,-34" Source="/illustrated_park.jpg" Stretch="Fill" Grid.ColumnSpan="7" Grid.RowSpan="3"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,30,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Height="160" Width="91" Foreground="Black" Background="White"><Run Text="A few showers early with overcast skies later in the day. High 61F. Winds light and variable. "/><LineBreak/><Run Text="Chance of rain 30%."/></TextBlock>
+        <Border BorderBrush="LightSkyBlue" BorderThickness="3,3,3,3" Grid.Row="2" Margin="2,23,5,102"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Sunday" VerticalAlignment="Center" Width="69" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Monday" VerticalAlignment="Center" Width="94" FontSize="20" Grid.Column="1" Grid.ColumnSpan="2" Margin="21,0,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tuesday" VerticalAlignment="Center" Width="94" FontSize="20" Grid.Column="2" Margin="19,0,0,0"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Wednesday" VerticalAlignment="Center" Width="105" FontSize="20" Grid.Column="3"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Thursday" VerticalAlignment="Center" Width="94" FontSize="20" Grid.Column="4" Margin="20,0,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Friday" VerticalAlignment="Center" Width="94" FontSize="20" Grid.Column="5" Grid.ColumnSpan="2" Margin="26,0,0,0"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Saturday" VerticalAlignment="Center" Width="94" FontSize="20" Grid.Column="6"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0,15,0,0" Grid.Row="1" TextWrapping="Wrap" Text="35" VerticalAlignment="Top" Height="31" Width="39" FontSize="28"/>
+        <Image Margin="64,4,3,16" Grid.Row="1" Source="/cloudy.png" Stretch="Fill"/>
+        <TextBlock HorizontalAlignment="Left" Margin="2,15,0,0" Grid.Row="1" TextWrapping="Wrap" Text="45" VerticalAlignment="Top" Height="31" Width="39" FontSize="28" Grid.Column="1"/>
+        <Image Margin="32,23,62,4" Grid.Row="1" Source="/fahrenheit.png" Stretch="Fill"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0,15,0,4" Grid.Row="1" TextWrapping="Wrap" Text="45" Width="39" FontSize="28" Grid.Column="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0,15,0,0" Grid.Row="1" TextWrapping="Wrap" Text="45" VerticalAlignment="Top" Height="31" Width="39" FontSize="28" Grid.Column="3"/>
+        <TextBlock HorizontalAlignment="Left" Margin="114,15,0,0" Grid.Row="1" TextWrapping="Wrap" Text="45" VerticalAlignment="Top" Height="31" Width="39" FontSize="28" Grid.Column="3" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="114,15,0,0" Grid.Row="1" TextWrapping="Wrap" Text="45" VerticalAlignment="Top" Height="31" Width="39" FontSize="28" Grid.Column="4" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="114,15,0,0" Grid.Row="1" TextWrapping="Wrap" Text="75" VerticalAlignment="Top" Height="31" Width="39" FontSize="28" Grid.Column="5" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="70,-12,0,0" TextWrapping="Wrap" Text="My Weather App" VerticalAlignment="Top" Height="28" Width="181" FontSize="22" Grid.ColumnSpan="3"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,30,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Cloudy skies early, followed by partial clearing. Low 47F. Winds light and variable." VerticalAlignment="Top" Height="97" Width="91" Foreground="Black" Background="White" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,30,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Height="141" Width="91" Foreground="Black" Background="White" Grid.Column="2" Text="Showers in the evening with some clearing overnight. Low 46F. Winds SSW at 5 to 10 mph. Chance of rain 50%."/>
+        <TextBlock HorizontalAlignment="Left" Margin="13,30,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Mostly cloudy skies early. A few showers developing later in the day. High 61F. Winds SSW at 5 to 10 mph. Chance of rain 30%" VerticalAlignment="Top" Height="150" Width="91" Foreground="Black" Background="White" Grid.Column="3"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,30,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Cloudy skies with periods of rain after midnight. Low 53F. Winds ESE at 5 to 10 mph. Chance of rain 90%. Rainfall around a quarter of an inch." VerticalAlignment="Top" Height="168" Width="91" Foreground="Black" Background="White" Grid.Column="4"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,33,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Height="138" Width="91" Foreground="Black" Background="White" Grid.Column="5" Text="A few showers early with mostly cloud conditions later in the day. High 49F. Winds W at 5 to 10 mph. Chance of rain 30%."/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,33,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Sunshine and clouds mixed. High around 65F. Winds E at 5 to 10 mph." VerticalAlignment="Top" Height="84" Width="91" Foreground="Black" Background="White" Grid.Column="6"/>
+        <Image Margin="33,23,62,4" Grid.Row="1" Source="/fahrenheit.png" Stretch="Fill" Grid.Column="1"/>
+        <Image Margin="32,23,62,4" Grid.Row="1" Source="/fahrenheit.png" Stretch="Fill" Grid.Column="2"/>
+        <Image Margin="32,23,62,4" Grid.Row="1" Source="/fahrenheit.png" Stretch="Fill" Grid.Column="3"/>
+        <Image Margin="32,23,62,4" Grid.Row="1" Source="/fahrenheit.png" Stretch="Fill" Grid.Column="4"/>
+        <Image Margin="32,23,62,4" Grid.Row="1" Source="/fahrenheit.png" Stretch="Fill" Grid.Column="5"/>
+        <Image Margin="32,23,62,4" Grid.Row="1" Source="/fahrenheit.png" Stretch="Fill" Grid.Column="6"/>
+        <Image Grid.Column="2" Margin="57,7,6,7" Grid.Row="1" Source="/heavy_rain.png" Stretch="Fill"/>
+        <Image Grid.Column="1" Margin="58,10,10,2" Source="/rain.png" Stretch="Fill" Grid.Row="1"/>
+        <Image Grid.Column="3" Margin="56,5,3,3" Grid.Row="1" Source="/hail.png" Stretch="Fill"/>
+        <Image Grid.Column="4" Margin="51,9,3,5" Grid.Row="1" Source="/partly_cloudy.png" Stretch="Fill"/>
+        <Image Grid.Column="5" Margin="58,8,10,8" Grid.Row="1" Source="/flooding.png" Stretch="Fill"/>
+        <Image Grid.Column="6" Margin="66,6,12,7" Grid.Row="1" Source="/sunny.png" Stretch="Fill"/>
+        <Border BorderBrush="LightSkyBlue" BorderThickness="3,3,3,3" Grid.Row="2" Margin="2,21,5,165" Grid.Column="1"/>
+        <Border BorderBrush="LightSkyBlue" BorderThickness="3,3,3,3" Grid.Row="2" Margin="3,21,4,122" Grid.Column="2"/>
+        <Border BorderBrush="LightSkyBlue" BorderThickness="3,3,3,3" Grid.Row="2" Margin="5,21,1,112" Grid.Column="3"/>
+        <Border BorderBrush="LightSkyBlue" BorderThickness="3,3,3,3" Grid.Row="2" Margin="3,23,3,95" Grid.Column="4"/>
+        <Border BorderBrush="LightSkyBlue" BorderThickness="3,3,3,3" Grid.Row="2" Margin="5,24,5,121" Grid.Column="5"/>
+        <Border BorderBrush="LightSkyBlue" BorderThickness="3,3,3,3" Grid.Row="2" Margin="5,24,5,173" Grid.Column="6"/>
+        <Button Style="{DynamicResource btnstyle}" Content="Prev 7 Days" HorizontalAlignment="Center" Height="34" Margin="0,265,0,0" Grid.Row="2" VerticalAlignment="Top" Width="94" Background="LightSkyBlue"/>
+        <Button Style="{DynamicResource btnstyle}" Content="Next 7 Days" HorizontalAlignment="Left" Height="34" Margin="8,265,0,0" Grid.Row="2" VerticalAlignment="Top" Width="94" Grid.Column="6" Background="LightSkyBlue"/>
+    </Grid>
+</Window>
